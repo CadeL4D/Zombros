@@ -1,0 +1,36 @@
+{
+  "$comment": "Canonical humanoid skeleton (DESIGN.md §3). Every human, zombie, clothing piece and animation targets it. Coordinates are Blender space: metres, Z up, character faces -Y, character's left is +X. glTF export turns this into Y up, facing +Z. Rest pose is an A-pose (arms ~45 deg down). Names use underscores because three.js strips dots from node names. Bones with deform=false are sockets for held items.",
+  "version": 1,
+  "restPose": "A",
+  "height": 1.8,
+  "bones": [
+    { "name": "root",        "parent": null,         "head": [0, 0, 0],             "tail": [0, 0.2, 0],             "deform": false },
+    { "name": "pelvis",      "parent": "root",       "head": [0, 0, 0.98],          "tail": [0, 0, 1.08],            "deform": true },
+    { "name": "spine",       "parent": "pelvis",     "head": [0, 0, 1.08],          "tail": [0, 0, 1.25],            "deform": true },
+    { "name": "chest",       "parent": "spine",      "head": [0, 0, 1.25],          "tail": [0, 0, 1.45],            "deform": true },
+    { "name": "neck",        "parent": "chest",      "head": [0, 0, 1.45],          "tail": [0, 0, 1.56],            "deform": true },
+    { "name": "head",        "parent": "neck",       "head": [0, 0, 1.56],          "tail": [0, 0, 1.8],             "deform": true },
+
+    { "name": "clavicle_L",  "parent": "chest",      "head": [0.03, -0.01, 1.41],   "tail": [0.17, 0, 1.42],         "deform": true },
+    { "name": "upperarm_L",  "parent": "clavicle_L", "head": [0.17, 0, 1.42],       "tail": [0.375, 0.02, 1.215],    "deform": true },
+    { "name": "forearm_L",   "parent": "upperarm_L", "head": [0.375, 0.02, 1.215],  "tail": [0.555, 0, 1.035],       "deform": true },
+    { "name": "hand_L",      "parent": "forearm_L",  "head": [0.555, 0, 1.035],     "tail": [0.67, 0, 0.92],         "deform": true },
+    { "name": "prop_L",      "parent": "hand_L",     "head": [0.6, -0.01, 0.985],   "tail": [0.6, -0.11, 0.985],     "deform": false },
+
+    { "name": "clavicle_R",  "parent": "chest",      "head": [-0.03, -0.01, 1.41],  "tail": [-0.17, 0, 1.42],        "deform": true },
+    { "name": "upperarm_R",  "parent": "clavicle_R", "head": [-0.17, 0, 1.42],      "tail": [-0.375, 0.02, 1.215],   "deform": true },
+    { "name": "forearm_R",   "parent": "upperarm_R", "head": [-0.375, 0.02, 1.215], "tail": [-0.555, 0, 1.035],      "deform": true },
+    { "name": "hand_R",      "parent": "forearm_R",  "head": [-0.555, 0, 1.035],    "tail": [-0.67, 0, 0.92],        "deform": true },
+    { "name": "prop_R",      "parent": "hand_R",     "head": [-0.6, -0.01, 0.985],  "tail": [-0.6, -0.11, 0.985],    "deform": false },
+
+    { "name": "thigh_L",     "parent": "pelvis",     "head": [0.1, 0, 0.96],        "tail": [0.11, -0.02, 0.52],     "deform": true },
+    { "name": "shin_L",      "parent": "thigh_L",    "head": [0.11, -0.02, 0.52],   "tail": [0.12, 0.01, 0.09],      "deform": true },
+    { "name": "foot_L",      "parent": "shin_L",     "head": [0.12, 0.01, 0.09],    "tail": [0.12, -0.11, 0.03],     "deform": true },
+    { "name": "toe_L",       "parent": "foot_L",     "head": [0.12, -0.11, 0.03],   "tail": [0.12, -0.19, 0.03],     "deform": true },
+
+    { "name": "thigh_R",     "parent": "pelvis",     "head": [-0.1, 0, 0.96],       "tail": [-0.11, -0.02, 0.52],    "deform": true },
+    { "name": "shin_R",      "parent": "thigh_R",    "head": [-0.11, -0.02, 0.52],  "tail": [-0.12, 0.01, 0.09],     "deform": true },
+    { "name": "foot_R",      "parent": "shin_R",     "head": [-0.12, 0.01, 0.09],   "tail": [-0.12, -0.11, 0.03],    "deform": true },
+    { "name": "toe_R",       "parent": "foot_R",     "head": [-0.12, -0.11, 0.03],  "tail": [-0.12, -0.19, 0.03],    "deform": true }
+  ]
+}

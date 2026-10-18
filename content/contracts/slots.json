@@ -1,0 +1,14 @@
+{
+  "$comment": "Character slots (DESIGN.md §3). One mesh per slot, all skinned to the canonical skeleton. Tri budgets are LOD0 maxima; a full survivor (all slots) must stay within 3-5k.",
+  "slots": [
+    { "id": "body",   "required": true,  "maxTris": 2000, "hides": [],          "desc": "Base body from neck down, incl. hands and feet" },
+    { "id": "head",   "required": true,  "maxTris": 800,  "hides": [],          "desc": "Head and face" },
+    { "id": "hair",   "required": false, "maxTris": 600,  "hides": [],          "desc": "Hair, beard" },
+    { "id": "top",    "required": false, "maxTris": 1200, "hides": ["body"],    "desc": "Shirt, jacket; hides covered body faces via masks" },
+    { "id": "bottom", "required": false, "maxTris": 800,  "hides": ["body"],    "desc": "Trousers, shorts, skirt" },
+    { "id": "shoes",  "required": false, "maxTris": 400,  "hides": ["body"],    "desc": "Shoes, boots" },
+    { "id": "hat",    "required": false, "maxTris": 400,  "hides": ["hair"],    "desc": "Caps, helmets, beanies" },
+    { "id": "back",   "required": false, "maxTris": 800,  "hides": [],          "desc": "Backpacks; defines a grid inventory size" },
+    { "id": "face",   "required": false, "maxTris": 300,  "hides": [],          "desc": "Glasses, masks, gas masks" }
+  ]
+}

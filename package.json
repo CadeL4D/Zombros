@@ -1,0 +1,12 @@
+{
+  "name": "zombros",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.33.0",
+  "scripts": {
+    "dev": "pnpm --filter @zombros/client dev",
+    "build": "pnpm --filter @zombros/client build",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test"
+  }
+}

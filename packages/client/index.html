@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Zombros</title>
+    <style>
+      html, body { margin: 0; height: 100%; background: #1d2024; overflow: hidden; font: 13px/1.4 system-ui, sans-serif; color: #e8e6e1; }
+      canvas { display: block; touch-action: none; }
+      #panel { position: fixed; top: 12px; left: 12px; width: 220px; max-width: calc(100vw - 48px); padding: 12px; background: rgba(20, 22, 26, 0.85); border-radius: 8px; }
+      #panel h1 { margin: 0 0 8px; font-size: 15px; letter-spacing: 0.04em; }
+      #panel label { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin: 6px 0; }
+      #panel input[type="range"] { width: 110px; }
+      #panel .swatches { display: flex; gap: 4px; margin: 6px 0; }
+      #panel .swatches button { width: 24px; height: 24px; border: 2px solid transparent; border-radius: 4px; cursor: pointer; }
+      #panel .swatches button.on { border-color: #fff; }
+      #stats { margin-top: 8px; opacity: 0.6; font-size: 11px; }
+    </style>
+  </head>
+  <body>
+    <div id="panel"><h1>ZOMBROS · base human</h1></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

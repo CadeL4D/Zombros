@@ -1,0 +1,13 @@
+{
+  "$comment": "Scale & grid contract (DESIGN.md §3a). Units are metres. World buildings and player builds use exactly these numbers.",
+  "unit": 1,
+  "buildGrid": 1,
+  "decorSnap": 0.5,
+  "wall": { "width": 2, "height": 3, "thickness": 0.2 },
+  "door": { "width": 1, "height": 2.1, "doubleWidth": 2 },
+  "window": { "width": 1, "height": 1.2, "sill": 0.9 },
+  "stairs": { "width": 2, "length": 4, "rise": 3 },
+  "garageDoor": { "single": 3, "double": 6 },
+  "humanHeight": 1.8,
+  "bevel": { "min": 0.02, "max": 0.05 }
+}

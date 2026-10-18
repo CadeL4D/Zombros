@@ -1,0 +1,62 @@
+{
+  "$comment": "Shared palette (DESIGN.md §3). One image, a grid of flat swatches; every model UVs its faces into swatch centres. Recolour = change a swatch here and rebuild palette.png (assets/pipeline/palette.py). Cells are [column, row] from the top-left. Rows 12-15 are reserved for light->dark gradient strips. Emissive swatches glow at night.",
+  "version": 1,
+  "image": "palette.png",
+  "cellSize": 16,
+  "columns": 16,
+  "rows": 16,
+  "swatches": {
+    "skin_1":        { "cell": [0, 0],  "color": "#f3d2b5" },
+    "skin_2":        { "cell": [1, 0],  "color": "#e2b48e" },
+    "skin_3":        { "cell": [2, 0],  "color": "#c98e66" },
+    "skin_4":        { "cell": [3, 0],  "color": "#a26a45" },
+    "skin_5":        { "cell": [4, 0],  "color": "#7a4b2e" },
+    "skin_6":        { "cell": [5, 0],  "color": "#4f2f1d" },
+    "lips":          { "cell": [6, 0],  "color": "#b0675e" },
+    "eye_white":     { "cell": [7, 0],  "color": "#ece8e0" },
+    "eye_dark":      { "cell": [8, 0],  "color": "#22201f" },
+
+    "hair_black":    { "cell": [0, 1],  "color": "#1e1b1a" },
+    "hair_brown":    { "cell": [1, 1],  "color": "#4a3122" },
+    "hair_blonde":   { "cell": [2, 1],  "color": "#c9a45f" },
+    "hair_red":      { "cell": [3, 1],  "color": "#8e3f22" },
+    "hair_grey":     { "cell": [4, 1],  "color": "#8d8a86" },
+
+    "cloth_white":   { "cell": [0, 2],  "color": "#d9d6cf" },
+    "cloth_grey":    { "cell": [1, 2],  "color": "#6f7175" },
+    "cloth_black":   { "cell": [2, 2],  "color": "#2b2c2f" },
+    "cloth_denim":   { "cell": [3, 2],  "color": "#3f5a7a" },
+    "cloth_navy":    { "cell": [4, 2],  "color": "#283651" },
+    "cloth_red":     { "cell": [5, 2],  "color": "#9c2f2b" },
+    "cloth_green":   { "cell": [6, 2],  "color": "#4c6a3a" },
+    "cloth_olive":   { "cell": [7, 2],  "color": "#5d5a35" },
+    "cloth_khaki":   { "cell": [8, 2],  "color": "#a8976c" },
+    "cloth_brown":   { "cell": [9, 2],  "color": "#6a4a32" },
+    "cloth_yellow":  { "cell": [10, 2], "color": "#d1a53a" },
+    "cloth_orange":  { "cell": [11, 2], "color": "#c8642a" },
+    "underwear":     { "cell": [12, 2], "color": "#5a5e66" },
+
+    "wood_light":    { "cell": [0, 4],  "color": "#b58b5a" },
+    "wood_dark":     { "cell": [1, 4],  "color": "#6b4a2f" },
+    "metal_light":   { "cell": [2, 4],  "color": "#9aa0a6" },
+    "metal_dark":    { "cell": [3, 4],  "color": "#4a4f55" },
+    "concrete":      { "cell": [4, 4],  "color": "#8c8a84" },
+    "brick":         { "cell": [5, 4],  "color": "#8e4a38" },
+    "asphalt":       { "cell": [6, 4],  "color": "#3a3b3d" },
+    "glass":         { "cell": [7, 4],  "color": "#7fa1b3" },
+    "rubber":        { "cell": [8, 4],  "color": "#1f1f20" },
+
+    "zombie_skin_1": { "cell": [0, 5],  "color": "#9aa784" },
+    "zombie_skin_2": { "cell": [1, 5],  "color": "#7b8a6d" },
+    "zombie_skin_3": { "cell": [2, 5],  "color": "#a99c8c" },
+    "blood_fresh":   { "cell": [3, 5],  "color": "#7d1414" },
+    "blood_dry":     { "cell": [4, 5],  "color": "#4a1210" },
+    "bone":          { "cell": [5, 5],  "color": "#ddd3bb" },
+
+    "emit_window":   { "cell": [0, 6],  "color": "#ffd58a", "emissive": true },
+    "emit_lamp":     { "cell": [1, 6],  "color": "#fff1c9", "emissive": true },
+    "emit_red":      { "cell": [2, 6],  "color": "#ff3b30", "emissive": true },
+
+    "debug_magenta": { "cell": [15, 15], "color": "#ff00ff" }
+  }
+}

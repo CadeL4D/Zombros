@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "assets": [
+    {
+      "id": "human_base",
+      "kind": "character",
+      "file": "human_base.glb",
+      "slots": {
+        "body": "body",
+        "head": "head"
+      },
+      "tris": {
+        "body": 1792,
+        "head": 204
+      },
+      "skeleton": 1,
+      "morphs": [
+        "female",
+        "heavy",
+        "thin",
+        "muscular"
+      ],
+      "tags": [
+        "human",
+        "base"
+      ]
+    }
+  ]
+}
