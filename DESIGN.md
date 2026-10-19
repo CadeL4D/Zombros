@@ -398,9 +398,9 @@ Each milestone ends with something playable in the browser.
 
 | # | Milestone | Done when |
 |---|---|---|
-| M0 | **Foundations** | Repo + contracts (skeleton, palette, slots, manifest, scale grid); base human approved; auto-deploy to a free static host |
+| M0 | **Foundations** | Repo + contracts (skeleton, palette, slots, manifest, scale grid); auto-deploy to a free static host |
 | M1 | **Walk the world** | Streamed terrain chunks, FP/TP controller, day/night lighting, phone + PC + gamepad controls |
-| M2 | **First bite** | Walkers with procedural animation, melee, hit zones, noise & stealth, cell population system |
+| M2 | **First bite** | Walkers (capsules), melee, hit zones, noise & stealth, cell population system |
 | M3 | **Together** | 2–8 player co-op in the browser (WebRTC host), prediction, synced zombies |
 | M4 | **Scavenge** | Generated towns from the modular kit, enterable interiors, loot tables, grid inventory, needs, infection |
 | M5 | **Home** | Building, Bench Tinkering crafting + stations, safehouse claim, saves, all death modes |
@@ -409,7 +409,7 @@ Each milestone ends with something playable in the browser.
 | M8 | **Sky & sea** | Boats, planes, helicopters |
 | M9 | **The cure** | Research Facility, cure synthesis, turned-player revive |
 | M10 | **Polish** | Audio, UI polish, phone performance pass, 32 km Large World, trader NPC |
-| Later | | PvP, dedicated public servers, more NPCs |
+| Later | | Survivor + zombie models and animation (capsules until then), PvP, dedicated public servers, more NPCs |
 
 **Vertical slice** (show friends) = end of M4: walk a generated town with friends, scavenge, fight, get infected.
 

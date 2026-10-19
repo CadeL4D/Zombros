@@ -1,11 +1,8 @@
-// Character viewer: loads every character in the manifest, lines them up on the 1 m build
-// grid and plays their baked clips (survivors: idle/walk/run, zombies: idle/shamble/attack).
-import { type Manifest, type ManifestEntry, palette, scale, validateManifest } from "@zombros/shared";
+// Character stand-ins: survivors and zombies are coloured capsules at human height until real
+// character models land (DESIGN.md §17, "Later"). Lined up on the 1 m build grid next to a wall module.
+import { palette, scale } from "@zombros/shared";
 import * as THREE from "three/webgpu";
-import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-
-const asset = (path: string) => import.meta.env.BASE_URL + path;
 
 const renderer = new THREE.WebGPURenderer({ antialias: true });
 renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
@@ -46,124 +43,47 @@ wall.position.set(-1, scale.wall.height / 2, -2);
 wall.castShadow = wall.receiveShadow = true;
 scene.add(wall);
 
+/** One capsule per character, coloured by palette swatch. */
+const CHARACTERS = [
+  { id: "survivor_1", kind: "survivor", swatch: "cloth_denim" },
+  { id: "survivor_2", kind: "survivor", swatch: "cloth_red" },
+  { id: "survivor_3", kind: "survivor", swatch: "cloth_yellow" },
+  { id: "survivor_4", kind: "survivor", swatch: "cloth_orange" },
+  { id: "zombie_1", kind: "zombie", swatch: "zombie_skin_1" },
+  { id: "zombie_2", kind: "zombie", swatch: "zombie_skin_2" },
+  { id: "zombie_3", kind: "zombie", swatch: "zombie_skin_3" },
+  { id: "zombie_4", kind: "zombie", swatch: "blood_dry" },
+] as const;
+
+const radius = 0.3;
+// CapsuleGeometry's length is the straight middle part; the caps add a radius at each end.
+const capsule = new THREE.CapsuleGeometry(radius, scale.humanHeight - 2 * radius, 4, 12);
+const spacing = 0.95;
+CHARACTERS.forEach((c, i) => {
+  const mesh = new THREE.Mesh(
+    capsule,
+    new THREE.MeshStandardMaterial({ color: palette.swatches[c.swatch]!.color, roughness: 0.8, flatShading: true }),
+  );
+  mesh.name = c.id;
+  mesh.position.set((i - (CHARACTERS.length - 1) / 2) * spacing, scale.humanHeight / 2, 0);
+  mesh.castShadow = mesh.receiveShadow = true;
+  scene.add(mesh);
+});
+
 const panel = document.getElementById("panel")!;
-
-/** Clip per mode, by character kind (tag). */
-const MODES = {
-  idle: { survivor: "idle", zombie: "zombie_idle" },
-  move: { survivor: "walk", zombie: "shamble" },
-  action: { survivor: "run", zombie: "zombie_attack" },
-} as const;
-type Mode = keyof typeof MODES;
-
-interface Character {
-  entry: ManifestEntry;
-  root: THREE.Object3D;
-  mixer: THREE.AnimationMixer;
-  clips: Map<string, THREE.AnimationClip>;
-  action?: THREE.AnimationAction;
-}
-
-const characters: Character[] = [];
-const clock = new THREE.Clock();
-
-function kindOf(e: ManifestEntry): "survivor" | "zombie" {
-  return e.tags.includes("zombie") ? "zombie" : "survivor";
-}
-
-function play(c: Character, mode: Mode) {
-  const clip = c.clips.get(MODES[mode][kindOf(c.entry)]);
-  if (!clip) return;
-  const next = c.mixer.clipAction(clip);
-  next.reset().setEffectiveWeight(1).play();
-  // Offset each character a little so a crowd doesn't move in lockstep.
-  next.time = (characters.indexOf(c) * 0.37) % clip.duration;
-  if (c.action && c.action !== next) c.action.crossFadeTo(next, 0.25, false);
-  c.action = next;
-}
-
-function button(label: string, onClick: () => void) {
-  const b = document.createElement("button");
-  b.textContent = label;
-  b.onclick = onClick;
-  return b;
-}
-
-async function load(entry: ManifestEntry, loader: GLTFLoader): Promise<Character> {
-  const gltf = await loader.loadAsync(asset(entry.file));
-  const root = gltf.scene;
-  root.traverse((o) => {
-    const m = o as THREE.SkinnedMesh;
-    if (!m.isMesh) return;
-    m.castShadow = m.receiveShadow = true;
-    m.frustumCulled = false;
-    const mat = m.material as THREE.MeshStandardMaterial;
-    if (mat.map) {
-      mat.map.magFilter = THREE.NearestFilter;
-      mat.map.minFilter = THREE.NearestFilter;
-      mat.map.generateMipmaps = false;
-    }
-  });
-  return {
-    entry,
-    root,
-    mixer: new THREE.AnimationMixer(root),
-    clips: new Map(gltf.animations.map((a) => [a.name, a])),
-  };
-}
+const stats = document.createElement("div");
+stats.id = "stats";
+panel.appendChild(stats);
 
 async function main() {
   await renderer.init();
-  const manifest: Manifest = await (await fetch(asset("manifest.json"))).json();
-  const errors = validateManifest(manifest);
-  if (errors.length) console.warn("manifest:", errors);
-
-  const entries = manifest.assets
-    .filter((a) => a.kind === "character" && a.tags.includes("generated"))
-    .sort((a, b) => kindOf(a).localeCompare(kindOf(b)) || a.id.localeCompare(b.id));
-  const loader = new GLTFLoader();
-  const loaded = await Promise.all(entries.map((e) => load(e, loader)));
-
-  const spacing = 0.95;
-  loaded.forEach((c, i) => {
-    c.root.position.x = (i - (loaded.length - 1) / 2) * spacing;
-    scene.add(c.root);
-    characters.push(c);
-    play(c, "idle");
-  });
-
-  const modes = document.createElement("div");
-  modes.className = "modes";
-  for (const [mode, label] of [["idle", "Idle"], ["move", "Walk / shamble"], ["action", "Run / attack"]] as const) {
-    modes.appendChild(button(label, () => characters.forEach((c) => play(c, mode))));
-  }
-  panel.appendChild(modes);
-
-  const helpers = characters.map((c) => {
-    const h = new THREE.SkeletonHelper(c.root);
-    h.visible = false;
-    scene.add(h);
-    return h;
-  });
-  const row = document.createElement("label");
-  row.textContent = "show bones";
-  const box = Object.assign(document.createElement("input"), { type: "checkbox" });
-  box.addEventListener("change", () => helpers.forEach((h) => (h.visible = box.checked)));
-  row.appendChild(box);
-  panel.appendChild(row);
-
-  const stats = document.createElement("div");
-  stats.id = "stats";
-  const tris = characters.map((c) => Object.values(c.entry.tris).reduce((a, b) => a + b, 0));
   const backend = (renderer.backend as { isWebGPUBackend?: boolean }).isWebGPUBackend ? "WebGPU" : "WebGL2";
-  stats.textContent = `${characters.length} characters · ${Math.min(...tris)}–${Math.max(...tris)} tris each · ${backend}`;
-  panel.appendChild(stats);
+  const zombies = CHARACTERS.filter((c) => c.kind === "zombie").length;
+  stats.textContent = `${CHARACTERS.length - zombies} survivors · ${zombies} zombies (capsules) · ${backend}`;
 }
 
 renderer.setAnimationLoop(() => {
   if (!innerWidth || !innerHeight) return; // hidden tab/pane: nothing to draw into
-  const dt = clock.getDelta();
-  for (const c of characters) c.mixer.update(dt);
   renderer.render(scene, camera);
 });
 
@@ -175,5 +95,5 @@ addEventListener("resize", () => {
 
 main().catch((e) => {
   console.error(e);
-  panel.append(` — failed to load: ${e}`);
+  panel.append(` — failed to start: ${e}`);
 });

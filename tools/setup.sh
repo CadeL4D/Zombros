@@ -39,19 +39,6 @@ fi
 
 [ -x "$T/bin/pnpm" ] || corepack enable --install-directory "$T/bin" pnpm
 
-# MPFB (MakeHuman for Blender) + its CC0 system assets, into tools/blender-user.
-if [ ! -d "$BLENDER_USER_RESOURCES/extensions/blender_org/mpfb" ]; then
-  blender --online-mode -c extension sync
-  blender --online-mode -c extension install -s -e mpfb
-fi
-MPFB_DATA="$BLENDER_USER_RESOURCES/extensions/.user/blender_org/mpfb/data"
-if [ ! -d "$MPFB_DATA/proxymeshes" ]; then
-  f=makehuman_system_assets_cc0.zip
-  [ -f "$f" ] || curl -fsSLO "https://files.makehumancommunity.org/asset_packs/makehuman_system_assets/$f"
-  unzip -tq "$f"
-  mkdir -p "$MPFB_DATA" && unzip -oq "$f" -d "$MPFB_DATA"
-fi
-
 cd "$ZOMBROS_ROOT"
 [ -x .venv/bin/python ] || uv venv --python "$PYTHON_V" .venv
 UV_HTTP_TIMEOUT=900 uv pip install --python .venv "torch==$TORCH_V" --index-url "$TORCH_INDEX"
