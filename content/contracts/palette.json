@@ -36,6 +36,17 @@
     "cloth_orange":  { "cell": [11, 2], "color": "#c8642a" },
     "underwear":     { "cell": [12, 2], "color": "#5a5e66" },
 
+    "terrain_grass":      { "cell": [0, 3],  "color": "#6b8a45" },
+    "terrain_grass_dark": { "cell": [1, 3],  "color": "#4f6e38" },
+    "terrain_dirt":       { "cell": [2, 3],  "color": "#7d6547" },
+    "terrain_sand":       { "cell": [3, 3],  "color": "#c9b78a" },
+    "terrain_rock":       { "cell": [4, 3],  "color": "#77736c" },
+    "terrain_snow":       { "cell": [5, 3],  "color": "#e6ebee" },
+    "water":              { "cell": [6, 3],  "color": "#2f5f73" },
+    "foliage_pine":       { "cell": [7, 3],  "color": "#35553a" },
+    "foliage_leaf":       { "cell": [8, 3],  "color": "#5a7d3a" },
+    "bark":               { "cell": [9, 3],  "color": "#5a4130" },
+
     "wood_light":    { "cell": [0, 4],  "color": "#b58b5a" },
     "wood_dark":     { "cell": [1, 4],  "color": "#6b4a2f" },
     "metal_light":   { "cell": [2, 4],  "color": "#9aa0a6" },

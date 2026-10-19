@@ -1,0 +1,19 @@
+{
+  "$comment": "World settings (DESIGN.md §4, §15). Generation is deterministic from the seed; only the server/host picks these values.",
+  "seed": 1337,
+  "size": 16384,
+  "seaLevel": 0,
+  "terrain": {
+    "leafSize": 64,
+    "segments": 32,
+    "maxHeight": 420
+  },
+  "trees": {
+    "cell": 6,
+    "radius": 0.35
+  },
+  "day": {
+    "lengthMinutes": 40,
+    "startHour": 8
+  }
+}

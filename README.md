@@ -28,6 +28,12 @@ pnpm dev        # http://localhost:5173
 pnpm test       # contract + manifest checks
 ```
 
+## Play (M1: walk the world)
+
+Seeded 16 km world (`content/world/default.json`), streamed as a quadtree of terrain nodes meshed in Web Workers; FP/TP survivor (still a capsule); day/night cycle. PC, gamepad and phone controls; press **H** in game for the list.
+
+URL options: `?seed=123` · `?quality=low|high` (phones get `low` automatically) · `?debug` (or **F3**). **T** speeds time up ×60, **[ ]** shift it by an hour.
+
 ## Rebuild assets
 
 Live, through the Blender MCP: add `assets/pipeline` to `sys.path`, `import build_all; build_all.main()`.
