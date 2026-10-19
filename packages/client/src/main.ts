@@ -5,9 +5,12 @@ import * as THREE from "three/webgpu";
 import { Input } from "./input/input";
 import { Player } from "./player/player";
 import { pickQuality } from "./quality";
+import { installErrorOverlay, showError } from "./ui/errors";
 import { Hud } from "./ui/hud";
 import { DayNight } from "./world/sky";
 import { Terrain } from "./world/terrain";
+
+installErrorOverlay();
 
 const params = new URLSearchParams(location.search);
 const seed = Number(params.get("seed") ?? worldConfig.seed) | 0;
@@ -28,7 +31,7 @@ const far = quality.viewDistance * 1.25;
 const camera = new THREE.PerspectiveCamera(70, innerWidth / innerHeight, 0.1, far);
 
 const sky = new DayNight(scene, worldConfig.day, { radius: quality.viewDistance * 1.1, shadowMap: quality.shadowMap, shadowExtent: quality.shadowExtent }, quality.viewDistance * 0.3);
-const terrain = new Terrain(world, { lodFactor: quality.lodFactor, viewDistance: quality.viewDistance, treeNodeMax: quality.treeNodeMax, coarseSegments: quality.coarseSegments, workers: quality.workers });
+const terrain = new Terrain(world, { lodFactor: quality.lodFactor, viewDistance: quality.viewDistance, treeNodeMax: quality.treeNodeMax, coarseSegments: quality.coarseSegments, workers: quality.workers, cache: quality.terrainCache, onError: showError });
 scene.add(terrain.group);
 
 const water = new THREE.Mesh(
@@ -124,5 +127,5 @@ renderer
   })
   .catch((e) => {
     console.error(e);
-    ui.append(`Failed to start: ${e}`);
+    showError(`Failed to start: ${e}`);
   });

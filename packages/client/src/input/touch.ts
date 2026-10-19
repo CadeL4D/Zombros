@@ -55,8 +55,13 @@ export class TouchControls implements InputSource {
     this.enabled = true;
     this.lastUsed = performance.now();
     document.body.classList.add("touch");
-    document.documentElement.requestFullscreen?.({ navigationUI: "hide" }).catch(() => {});
-    (screen.orientation as ScreenOrientation & { lock?: (o: string) => Promise<void> }).lock?.("landscape").catch(() => {});
+    // Neither exists on iPhone Safari (and older WebKit returns no promise), so never let them throw.
+    try {
+      document.documentElement.requestFullscreen?.({ navigationUI: "hide" })?.catch(() => {});
+      (screen.orientation as (ScreenOrientation & { lock?: (o: string) => Promise<void> }) | undefined)?.lock?.("landscape")?.catch(() => {});
+    } catch {
+      /* not supported */
+    }
   }
 
   private onDown(e: PointerEvent) {

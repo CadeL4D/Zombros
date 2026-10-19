@@ -24,6 +24,8 @@ export PIP_CACHE_DIR="$C/pip"
 # AI model weights and framework caches
 export HF_HOME="$T/ai/models/huggingface"
 export TORCH_HOME="$T/ai/models/torch"
+export HY3DGEN_MODELS="$T/ai/models/hy3dgen"
+export U2NET_HOME="$T/ai/models/u2net"
 export CUDA_CACHE_PATH="$C/nv"
 export TRITON_CACHE_DIR="$C/triton"
 

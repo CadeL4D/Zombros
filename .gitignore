@@ -12,6 +12,7 @@ assets/source/ai/
 # Local AI model weights
 tools/ai/weights/
 tools/ai/models/
+tools/ai/src/
 
 # Python
 __pycache__/

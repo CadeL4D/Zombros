@@ -17,6 +17,9 @@ export interface TerrainOptions {
   /** Faces per side for nodes coarser than leaves (leaves always use the world setting). */
   coarseSegments: number;
   workers: number;
+  /** Built nodes kept around for when you walk back (each is ~0.25 MB). */
+  cache: number;
+  onError?: (message: string) => void;
 }
 
 interface Node {
@@ -31,7 +34,6 @@ interface Node {
 }
 
 const key = (level: number, ix: number, iz: number) => `${level}:${ix}:${iz}`;
-const CACHE = 700;
 
 export class Terrain {
   readonly group = new THREE.Group();
@@ -63,6 +65,7 @@ export class Terrain {
       const w = new Worker(new URL("./terrain.worker.ts", import.meta.url), { type: "module" });
       w.postMessage({ seed: world.seed });
       w.onmessage = (e: MessageEvent<NodeResult>) => this.onBuilt(i, e.data);
+      w.onerror = (e) => opts.onError?.(`terrain worker: ${e.message || "failed to load"}`);
       this.workers.push(w);
       this.busy.push(0);
     }
@@ -232,7 +235,7 @@ export class Terrain {
 
   private evict(show: Set<Node>) {
     const built = [...this.nodes.values()].filter((n) => n.object);
-    if (built.length <= CACHE) {
+    if (built.length <= this.opts.cache) {
       this.dropEmpty();
       return;
     }
@@ -240,7 +243,7 @@ export class Terrain {
     built
       .filter((n) => !show.has(n) && !wanted.has(n))
       .sort((a, b) => a.used - b.used)
-      .slice(0, built.length - CACHE)
+      .slice(0, built.length - this.opts.cache)
       .forEach((n) => this.dispose(n));
     this.dropEmpty();
   }

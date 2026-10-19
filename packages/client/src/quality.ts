@@ -10,6 +10,7 @@ export interface Quality {
   lodFactor: number;
   treeNodeMax: number;
   coarseSegments: number;
+  terrainCache: number;
   workers: number;
 }
 
@@ -19,7 +20,7 @@ export function pickQuality(): Quality {
   const cores = navigator.hardwareConcurrency || 4;
   const workers = Math.max(1, Math.min(3, cores - 1));
   if (param === "low" || (param !== "high" && phone)) {
-    return { name: "low", pixelRatio: Math.min(devicePixelRatio, 1.5), antialias: false, shadowMap: 1024, shadowExtent: 28, viewDistance: 1400, lodFactor: 1.5, treeNodeMax: 128, coarseSegments: 16, workers };
+    return { name: "low", pixelRatio: Math.min(devicePixelRatio, 1.5), antialias: false, shadowMap: 1024, shadowExtent: 28, viewDistance: 1400, lodFactor: 1.5, treeNodeMax: 128, coarseSegments: 16, terrainCache: 300, workers };
   }
-  return { name: "high", pixelRatio: Math.min(devicePixelRatio, 2), antialias: true, shadowMap: 2048, shadowExtent: 48, viewDistance: 3200, lodFactor: 2.2, treeNodeMax: 256, coarseSegments: 32, workers };
+  return { name: "high", pixelRatio: Math.min(devicePixelRatio, 2), antialias: true, shadowMap: 2048, shadowExtent: 48, viewDistance: 3200, lodFactor: 2.2, treeNodeMax: 256, coarseSegments: 32, terrainCache: 700, workers };
 }

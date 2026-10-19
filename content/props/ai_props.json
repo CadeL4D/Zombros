@@ -1,0 +1,9 @@
+{
+  "$comment": "Props generated from Gen Images with local image-to-3D (assets/pipeline/ai_shapegen.py -> stylize.py). size = metres along the longest axis. tris = LOD0 budget (DESIGN.md §3a). swatches = optional palette names the colour snap may use; omit to allow every prop swatch.",
+  "props": [
+    { "id": "jerrycan_red", "image": "Red Jerrycan Single.png", "size": 0.47, "tris": 300 },
+    { "id": "boulder", "image": "Boulder.png", "size": 1.4, "tris": 250 },
+    { "id": "fire_axe_red", "image": "Fire Axe Red Head.png", "size": 0.9, "tris": 300 },
+    { "id": "sedan_olive_ai", "image": "Olive Sedan.png", "size": 4.6, "tris": 3000 }
+  ]
+}

@@ -8,5 +8,7 @@ export default defineConfig({
   build: { target: "es2022", chunkSizeWarningLimit: 1500 },
   // Terrain workers import shared code as ES modules.
   worker: { format: "es" },
-  server: { port: 5173 },
+  // host: reachable from phones on the same Wi-Fi (http://<pc-ip>:5173).
+  server: { port: 5173, host: true },
+  preview: { host: true },
 });
