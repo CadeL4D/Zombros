@@ -1,0 +1,258 @@
+{
+  "$comment": "PLACEHOLDER characters (2026-10-18): stand-ins until the final character pipeline lands; everything they produce is tagged \"placeholder\" in the manifest. Generated characters (assets/pipeline/mpfb_character.py). Bodies, clothes and hair come from MPFB (MakeHuman for Blender, CC0 assets); the build folds the rig into the 22-bone skeleton contract, decimates every piece to its slot budget and paints it with palette swatches. macros are MPFB sliders 0-1. outfit = MPFB suit (split into top/bottom), shoes, hair, hat; colors = palette swatch per slot. zombie adds decay: torn clothes, blood, zombie skin. style = MPFB targets (0-1) applied to every character for the POLYGON-style cartoon look: big head, hands and feet, short neck, chunky limbs; per-character style overrides merge on top. boneScale scales the vertices skinned to a bone about its joint (blended by weight) for stronger cartoon proportions. facet: decimate to budget*facet.budget, then planar-dissolve near-flat areas for bigger, blockier facets.",
+  "version": 1,
+  "proxy": "proxy741",
+  "style": {
+    "head-scale-vert-incr": 0.7,
+    "head-scale-horiz-incr": 0.8,
+    "head-scale-depth-incr": 0.6,
+    "measure-neck-height-decr": 0.8,
+    "neck-scale-depth-incr": 0.3,
+    "l-hand-scale-incr": 0.6,
+    "r-hand-scale-incr": 0.6,
+    "l-foot-scale-incr": 0.5,
+    "r-foot-scale-incr": 0.5,
+    "measure-shoulder-dist-incr": 0.6,
+    "torso-scale-depth-incr": 0.25,
+    "l-upperarm-scale-horiz-incr": 0.35,
+    "r-upperarm-scale-horiz-incr": 0.35,
+    "l-upperarm-scale-depth-incr": 0.35,
+    "r-upperarm-scale-depth-incr": 0.35,
+    "l-lowerarm-scale-horiz-incr": 0.35,
+    "r-lowerarm-scale-horiz-incr": 0.35,
+    "l-lowerarm-scale-depth-incr": 0.35,
+    "r-lowerarm-scale-depth-incr": 0.35,
+    "l-upperleg-scale-horiz-incr": 0.25,
+    "r-upperleg-scale-horiz-incr": 0.25,
+    "l-lowerleg-scale-horiz-incr": 0.3,
+    "r-lowerleg-scale-horiz-incr": 0.3,
+    "l-lowerleg-scale-depth-incr": 0.3,
+    "r-lowerleg-scale-depth-incr": 0.3,
+    "upperlegs-height-decr": 0.5,
+    "lowerlegs-height-decr": 0.35,
+    "torso-scale-horiz-incr": 0.35,
+    "measure-waist-circ-incr": 0.3,
+    "measure-upperarm-circ-incr": 0.5,
+    "measure-thigh-circ-incr": 0.4,
+    "measure-calf-circ-incr": 0.45
+  },
+  "boneScale": {
+    "head": 1.32,
+    "hand": 1.3,
+    "foot": 1.18
+  },
+  "characters": [
+    {
+      "id": "survivor_mechanic",
+      "kind": "survivor",
+      "macros": {
+        "gender": 1.0,
+        "age": 0.5,
+        "muscle": 0.65,
+        "weight": 0.55,
+        "height": 0.55
+      },
+      "outfit": {
+        "suit": "male_worksuit01",
+        "shoes": "shoes06",
+        "hair": "short02"
+      },
+      "colors": {
+        "skin": "skin_3",
+        "top": "cloth_navy",
+        "bottom": "cloth_navy",
+        "shoes": "rubber",
+        "hair": "hair_black"
+      }
+    },
+    {
+      "id": "survivor_nurse",
+      "kind": "survivor",
+      "macros": {
+        "gender": 0.0,
+        "age": 0.4,
+        "muscle": 0.45,
+        "weight": 0.45,
+        "height": 0.45
+      },
+      "outfit": {
+        "suit": "female_sportsuit01",
+        "shoes": "shoes02",
+        "hair": "ponytail01"
+      },
+      "colors": {
+        "skin": "skin_2",
+        "top": "cloth_green",
+        "bottom": "cloth_grey",
+        "shoes": "cloth_white",
+        "hair": "hair_brown"
+      }
+    },
+    {
+      "id": "survivor_farmer",
+      "kind": "survivor",
+      "macros": {
+        "gender": 1.0,
+        "age": 0.75,
+        "muscle": 0.5,
+        "weight": 0.8,
+        "height": 0.45
+      },
+      "outfit": {
+        "suit": "male_casualsuit04",
+        "shoes": "shoes03",
+        "hair": "short04",
+        "hat": "fedora01"
+      },
+      "colors": {
+        "skin": "skin_1",
+        "top": "cloth_red",
+        "bottom": "cloth_denim",
+        "shoes": "cloth_brown",
+        "hair": "hair_grey",
+        "hat": "cloth_khaki"
+      }
+    },
+    {
+      "id": "survivor_student",
+      "kind": "survivor",
+      "macros": {
+        "gender": 0.0,
+        "age": 0.25,
+        "muscle": 0.35,
+        "weight": 0.3,
+        "height": 0.55
+      },
+      "outfit": {
+        "suit": "female_casualsuit01",
+        "shoes": "shoes05",
+        "hair": "bob02"
+      },
+      "colors": {
+        "skin": "skin_5",
+        "top": "cloth_yellow",
+        "bottom": "cloth_black",
+        "shoes": "cloth_white",
+        "hair": "hair_black"
+      }
+    },
+    {
+      "id": "zombie_office",
+      "kind": "zombie",
+      "macros": {
+        "gender": 1.0,
+        "age": 0.6,
+        "muscle": 0.3,
+        "weight": 0.35,
+        "height": 0.6
+      },
+      "outfit": {
+        "suit": "male_casualsuit02",
+        "shoes": "shoes01",
+        "hair": "short03"
+      },
+      "colors": {
+        "skin": "zombie_skin_4",
+        "top": "cloth_white",
+        "bottom": "cloth_grey",
+        "shoes": "rubber",
+        "hair": "hair_brown"
+      },
+      "zombie": {
+        "torn": 0.35,
+        "blood": 0.5,
+        "seed": 11
+      }
+    },
+    {
+      "id": "zombie_jogger",
+      "kind": "zombie",
+      "macros": {
+        "gender": 0.0,
+        "age": 0.35,
+        "muscle": 0.4,
+        "weight": 0.25,
+        "height": 0.5
+      },
+      "outfit": {
+        "suit": "female_sportsuit01",
+        "shoes": "shoes04",
+        "hair": "short01"
+      },
+      "colors": {
+        "skin": "zombie_skin_5",
+        "top": "cloth_orange",
+        "bottom": "cloth_black",
+        "shoes": "cloth_grey",
+        "hair": "hair_blonde"
+      },
+      "zombie": {
+        "torn": 0.3,
+        "blood": 0.55,
+        "seed": 23
+      }
+    },
+    {
+      "id": "zombie_heavy",
+      "kind": "zombie",
+      "macros": {
+        "gender": 1.0,
+        "age": 0.7,
+        "muscle": 0.25,
+        "weight": 1.0,
+        "height": 0.4
+      },
+      "outfit": {
+        "suit": "male_casualsuit03",
+        "shoes": "shoes03",
+        "hair": "short04"
+      },
+      "colors": {
+        "skin": "zombie_skin_2",
+        "top": "cloth_khaki",
+        "bottom": "cloth_brown",
+        "shoes": "cloth_brown",
+        "hair": "hair_grey"
+      },
+      "zombie": {
+        "torn": 0.45,
+        "blood": 0.45,
+        "seed": 37
+      }
+    },
+    {
+      "id": "zombie_soldier",
+      "kind": "zombie",
+      "macros": {
+        "gender": 1.0,
+        "age": 0.4,
+        "muscle": 0.7,
+        "weight": 0.5,
+        "height": 0.65
+      },
+      "outfit": {
+        "suit": "male_worksuit01",
+        "shoes": "shoes06",
+        "hair": "short04"
+      },
+      "colors": {
+        "skin": "zombie_skin_4",
+        "top": "cloth_olive",
+        "bottom": "cloth_olive",
+        "shoes": "rubber",
+        "hair": "hair_black"
+      },
+      "zombie": {
+        "torn": 0.25,
+        "blood": 0.6,
+        "seed": 41
+      }
+    }
+  ],
+  "facet": {
+    "budget": 0.45,
+    "planarDegrees": 10,
+    "clothInflate": 0.01,
+    "smoothDegrees": 50
+  }
+}

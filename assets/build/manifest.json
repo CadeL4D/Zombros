@@ -24,6 +24,272 @@
         "human",
         "base"
       ]
+    },
+    {
+      "id": "survivor_farmer",
+      "kind": "character",
+      "file": "survivor_farmer.glb",
+      "slots": {
+        "body": "body",
+        "head": "head",
+        "top": "top",
+        "bottom": "bottom",
+        "shoes": "shoes",
+        "hair": "hair",
+        "hat": "hat"
+      },
+      "tris": {
+        "body": 284,
+        "head": 348,
+        "top": 522,
+        "bottom": 348,
+        "shoes": 174,
+        "hair": 260,
+        "hat": 174
+      },
+      "skeleton": 1,
+      "animations": [
+        "idle",
+        "walk",
+        "run"
+      ],
+      "tags": [
+        "survivor",
+        "generated",
+        "mpfb",
+        "placeholder"
+      ]
+    },
+    {
+      "id": "survivor_mechanic",
+      "kind": "character",
+      "file": "survivor_mechanic.glb",
+      "slots": {
+        "body": "body",
+        "head": "head",
+        "top": "top",
+        "bottom": "bottom",
+        "shoes": "shoes",
+        "hair": "hair"
+      },
+      "tris": {
+        "body": 305,
+        "head": 348,
+        "top": 522,
+        "bottom": 348,
+        "shoes": 174,
+        "hair": 260
+      },
+      "skeleton": 1,
+      "animations": [
+        "idle",
+        "walk",
+        "run"
+      ],
+      "tags": [
+        "survivor",
+        "generated",
+        "mpfb",
+        "placeholder"
+      ]
+    },
+    {
+      "id": "survivor_nurse",
+      "kind": "character",
+      "file": "survivor_nurse.glb",
+      "slots": {
+        "body": "body",
+        "head": "head",
+        "top": "top",
+        "bottom": "bottom",
+        "shoes": "shoes",
+        "hair": "hair"
+      },
+      "tris": {
+        "body": 411,
+        "head": 348,
+        "top": 523,
+        "bottom": 348,
+        "shoes": 174,
+        "hair": 260
+      },
+      "skeleton": 1,
+      "animations": [
+        "idle",
+        "walk",
+        "run"
+      ],
+      "tags": [
+        "survivor",
+        "generated",
+        "mpfb",
+        "placeholder"
+      ]
+    },
+    {
+      "id": "survivor_student",
+      "kind": "character",
+      "file": "survivor_student.glb",
+      "slots": {
+        "body": "body",
+        "head": "head",
+        "top": "top",
+        "bottom": "bottom",
+        "shoes": "shoes",
+        "hair": "hair"
+      },
+      "tris": {
+        "body": 313,
+        "head": 348,
+        "top": 523,
+        "bottom": 349,
+        "shoes": 174,
+        "hair": 260
+      },
+      "skeleton": 1,
+      "animations": [
+        "idle",
+        "walk",
+        "run"
+      ],
+      "tags": [
+        "survivor",
+        "generated",
+        "mpfb",
+        "placeholder"
+      ]
+    },
+    {
+      "id": "zombie_heavy",
+      "kind": "character",
+      "file": "zombie_heavy.glb",
+      "slots": {
+        "body": "body",
+        "head": "head",
+        "top": "top",
+        "bottom": "bottom",
+        "shoes": "shoes",
+        "hair": "hair"
+      },
+      "tris": {
+        "body": 472,
+        "head": 348,
+        "top": 441,
+        "bottom": 279,
+        "shoes": 173,
+        "hair": 260
+      },
+      "skeleton": 1,
+      "animations": [
+        "zombie_idle",
+        "shamble",
+        "zombie_attack"
+      ],
+      "tags": [
+        "zombie",
+        "generated",
+        "mpfb",
+        "placeholder"
+      ]
+    },
+    {
+      "id": "zombie_jogger",
+      "kind": "character",
+      "file": "zombie_jogger.glb",
+      "slots": {
+        "body": "body",
+        "head": "head",
+        "top": "top",
+        "bottom": "bottom",
+        "shoes": "shoes",
+        "hair": "hair"
+      },
+      "tris": {
+        "body": 471,
+        "head": 348,
+        "top": 520,
+        "bottom": 332,
+        "shoes": 174,
+        "hair": 260
+      },
+      "skeleton": 1,
+      "animations": [
+        "zombie_idle",
+        "shamble",
+        "zombie_attack"
+      ],
+      "tags": [
+        "zombie",
+        "generated",
+        "mpfb",
+        "placeholder"
+      ]
+    },
+    {
+      "id": "zombie_office",
+      "kind": "character",
+      "file": "zombie_office.glb",
+      "slots": {
+        "body": "body",
+        "head": "head",
+        "top": "top",
+        "bottom": "bottom",
+        "shoes": "shoes",
+        "hair": "hair"
+      },
+      "tris": {
+        "body": 361,
+        "head": 348,
+        "top": 489,
+        "bottom": 314,
+        "shoes": 174,
+        "hair": 260
+      },
+      "skeleton": 1,
+      "animations": [
+        "zombie_idle",
+        "shamble",
+        "zombie_attack"
+      ],
+      "tags": [
+        "zombie",
+        "generated",
+        "mpfb",
+        "placeholder"
+      ]
+    },
+    {
+      "id": "zombie_soldier",
+      "kind": "character",
+      "file": "zombie_soldier.glb",
+      "slots": {
+        "body": "body",
+        "head": "head",
+        "top": "top",
+        "bottom": "bottom",
+        "shoes": "shoes",
+        "hair": "hair"
+      },
+      "tris": {
+        "body": 329,
+        "head": 348,
+        "top": 509,
+        "bottom": 342,
+        "shoes": 174,
+        "hair": 260
+      },
+      "skeleton": 1,
+      "animations": [
+        "zombie_idle",
+        "shamble",
+        "zombie_attack"
+      ],
+      "tags": [
+        "zombie",
+        "generated",
+        "mpfb",
+        "placeholder"
+      ]
     }
   ]
 }

@@ -57,6 +57,8 @@ export interface ManifestEntry {
   tris: Record<string, number>;
   skeleton?: number;
   morphs?: string[];
+  /** Animation clip names baked into the GLB (glTF animations). */
+  animations?: string[];
   tags: string[];
 }
 

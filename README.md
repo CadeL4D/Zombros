@@ -38,6 +38,12 @@ Headless:
 blender -b --factory-startup -P assets/pipeline/build_all.py
 ```
 
+Placeholder survivors and zombies (stand-ins until the final character pipeline; tagged `placeholder` in the manifest) — MPFB bodies/clothes/hair → 22-bone contract rig, cartoon proportions, palette paint, placeholder clips, defined in `content/characters/roster.json`:
+
+```bash
+blender -b --factory-startup -P assets/pipeline/build_characters.py -- --render   # preview: tools/previews/characters.png
+```
+
 `build_all` validates every asset against the contracts (bones, tri budget, 1–4 weights per vertex, palette-only UVs) before exporting, then updates `assets/build/manifest.json`.
 
 ## Contracts in short

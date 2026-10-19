@@ -9,7 +9,7 @@ BUILD = REPO / "assets" / "build"
 MANIFEST = BUILD / "manifest.json"
 
 
-def export_glb(asset_id, objects):
+def export_glb(asset_id, objects, animations=False):
     BUILD.mkdir(parents=True, exist_ok=True)
     path = BUILD / f"{asset_id}.glb"
     for o in bpy.context.selected_objects:
@@ -26,7 +26,10 @@ def export_glb(asset_id, objects):
         export_skins=True,
         export_morph=True,
         export_morph_normal=False,  # flat shaded in-game; morph normals would double the file
-        export_animations=False,
+        export_animations=animations,
+        export_animation_mode="NLA_TRACKS",
+        export_force_sampling=True,
+        export_optimize_animation_size=True,
         export_materials="EXPORT",
     )
     return path

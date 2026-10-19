@@ -52,6 +52,10 @@
     "blood_fresh":   { "cell": [3, 5],  "color": "#7d1414" },
     "blood_dry":     { "cell": [4, 5],  "color": "#4a1210" },
     "bone":          { "cell": [5, 5],  "color": "#ddd3bb" },
+    "zombie_skin_4": { "cell": [6, 5],  "color": "#b2bcc2" },
+    "zombie_skin_5": { "cell": [7, 5],  "color": "#c9c4b3" },
+    "zombie_eye":    { "cell": [8, 5],  "color": "#eef3d2" },
+    "eye_socket":    { "cell": [9, 5],  "color": "#3b2a2c" },
 
     "emit_window":   { "cell": [0, 6],  "color": "#ffd58a", "emissive": true },
     "emit_lamp":     { "cell": [1, 6],  "color": "#fff1c9", "emissive": true },
