@@ -57,7 +57,7 @@ Status: living document. Items marked **[OPEN]** still need a decision.
 | Props/clutter | Parametric generators (tables, shelves, crates, cans, fences…), some generated in-browser |
 | Weapons + FP arms | Hand-built, highest polycount budget |
 
-Local hardware for AI tools: RTX 4060 Laptop 8 GB VRAM, 16 GB RAM → low-VRAM model variants.
+Local hardware for AI tools: **Tesla P100 16 GB** (Pascal, sm_60: no tensor cores, no bf16, no flash-attention, no Triton), Intel N150 4-core, 15 GB RAM, Ubuntu 24.04. Pinned to **PyTorch 2.14 + CUDA 12.6**, the last release with Pascal wheels. Tools must run in fp16/fp32 with PyTorch SDPA attention; CUDA extensions are built for `TORCH_CUDA_ARCH_LIST=6.0`.
 
 **Tri budgets:** zombie 1.5–3k · player 3–5k · car 2–4k · building piece 50–300 · FP weapon 3–6k. Full spec in §3a.
 

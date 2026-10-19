@@ -12,6 +12,14 @@ assets/pipeline/     Blender Python: palette, base_human, validate, export, buil
 assets/build/        exported GLBs, palette.png, manifest.json (committed; served by the client)
 ```
 
+## Setup
+
+Everything (Node, pnpm, Python, Blender, caches, AI models) lives inside this folder under `tools/`, `.venv/`, `.pnpm-store/` and `.cache/`. Nothing is installed globally. First time: `bash tools/setup.sh` (downloads and checksum-verifies everything). Then start each shell with:
+
+```bash
+source tools/env.sh
+```
+
 ## Run
 
 ```bash
@@ -27,7 +35,7 @@ Live, through the Blender MCP: add `assets/pipeline` to `sys.path`, `import buil
 Headless:
 
 ```bash
-"C:\Program Files\Blender Foundation\Blender 5.1\blender.exe" -b --factory-startup -P assets/pipeline/build_all.py
+blender -b --factory-startup -P assets/pipeline/build_all.py
 ```
 
 `build_all` validates every asset against the contracts (bones, tri budget, 1–4 weights per vertex, palette-only UVs) before exporting, then updates `assets/build/manifest.json`.

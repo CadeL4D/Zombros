@@ -1,2 +1,3 @@
 packages:
   - packages/*
+storeDir: .pnpm-store

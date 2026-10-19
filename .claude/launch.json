@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "client",
-      "runtimeExecutable": "pnpm",
-      "runtimeArgs": ["dev"],
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "source tools/env.sh && pnpm dev"],
       "port": 5173
     }
   ]

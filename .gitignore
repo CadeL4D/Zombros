@@ -16,3 +16,16 @@ tools/ai/models/
 # Python
 __pycache__/
 *.pyc
+
+# Project-local package store, caches and envs (everything stays in this folder)
+.pnpm-store/
+.venv/
+.cache/
+
+# Project-local toolchain (see tools/env.sh) — only env.sh is committed
+tools/dl/
+tools/node/
+tools/bin/
+tools/python/
+tools/blender/
+tools/blender-user/
